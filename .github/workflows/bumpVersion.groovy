@@ -5,10 +5,10 @@ def token = System.getenv('GITHUB_TOKEN')
 def masterVersion
 def localVersion
 
-echo repository
-echo branch
-echo username
-echo token
+println(repository)
+println(branch)
+println(username)
+println(token)
 
 def repoUri = "https://$username:$token@github.wdf.sap.corp/${repository}.git"
 
