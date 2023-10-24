@@ -32,4 +32,5 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF: ${{ github.ref }}
         run: |
+          export PATH=$HOME/.sdkman/candidates/groovy/current/bin:$PATH
           groovy bumpVersion.groovy
