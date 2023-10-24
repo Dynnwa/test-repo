@@ -17,6 +17,13 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
+      - name: Install SDKMAN and Groovy
+        run: |
+          curl -s "https://get.sdkman.io" | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk install groovy
+        shell: bash
+
       - name: Execute Groovy script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
