@@ -28,7 +28,6 @@ jobs:
       - name: Execute Groovy script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF: ${{ github.ref }}
         run: |
