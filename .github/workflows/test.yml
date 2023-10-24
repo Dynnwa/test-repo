@@ -19,7 +19,7 @@ jobs:
 
       - name: Install SDKMAN and Groovy
         run: |
-          curl -s get.sdkman.io | bash
+          curl -s "https://get.sdkman.io" | bash
           source "$HOME/.sdkman/bin/sdkman-init.sh"
           sdk install groovy
           groovy -version
