@@ -6,14 +6,12 @@ def token = System.getenv('GITHUB_TOKEN')
 def masterVersion
 def localVersion
 
-println(repository)
-println(username)
-println(branch)
-println(token)
-
 def repoUri = "https://$username:$token@github.wdf.sap.corp/$username/${repository}.git"
 
-sh script: "git clone $repoUri --branch master"
+def command = "git clone $repoUri --branch master"
+def process = command.execute()
+process.waitFor()
+
 dir(repository) {
     masterVersion = sh(script: "mvn help:evaluate -Dexpression='project.version' -q -DforceStdout", returnStdout: true)
 }
