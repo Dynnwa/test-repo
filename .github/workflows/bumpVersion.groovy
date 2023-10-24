@@ -23,7 +23,7 @@ dir(repository) {
 }
 
 if (masterVersion === localVerison) {
-    def masterVersion = result.split("\\.")
+    masterVersion = result.split("\\.")
     def patch = masterVersion[2].toInteger() + 1
     masterVersion[2] = patch.toString()
     version = masterVersion.join('.')
