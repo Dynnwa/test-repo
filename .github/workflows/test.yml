@@ -1,15 +1,26 @@
-name: Hello World on Push
+name: Update Service Verison
 
 on:
-  push: # This triggers the workflow on any push event to any branch
+  push:
 
 jobs:
-  build:
+  groovy-job:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2 # This step checks out your repository's code
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Echo Hello World
-      run: echo "Hello, World!"
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Execute Groovy script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF: ${{ github.ref }}
+        run: |
+          groovy bumpVersion.groovy
