@@ -1,14 +1,17 @@
-def repository = System.getenv('GITHUB_REPOSITORY')
+def GITHUB_REPOSITORY = System.getenv('GITHUB_REPOSITORY')
+def repository = GITHUB_REPOSITORY.split('/')[1]
+def username = GITHUB_REPOSITORY.split('/')[0]
 def branch = System.getenv('GITHUB_REF')
 def token = System.getenv('GITHUB_TOKEN')
 def masterVersion
 def localVersion
 
 println(repository)
+println(username)
 println(branch)
 println(token)
 
-def repoUri = "https://$username:$token@github.wdf.sap.corp/${repository}.git"
+def repoUri = "https://$username:$token@github.wdf.sap.corp/$username/${repository}.git"
 
 sh script: "git clone $repoUri --branch master"
 dir(repository) {
