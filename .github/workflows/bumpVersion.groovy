@@ -11,6 +11,7 @@ def repoUri = "https://$username:$token@github.wdf.sap.corp/$username/${reposito
 def command = "git clone $repoUri --branch master"
 def process = command.execute()
 process.waitFor()
+println "Exit code: ${process.exitValue()}"
 
 dir(repository) {
     masterVersion = sh(script: "mvn help:evaluate -Dexpression='project.version' -q -DforceStdout", returnStdout: true)
